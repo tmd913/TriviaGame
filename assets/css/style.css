@@ -1,0 +1,109 @@
+body {
+    background: url("../images/philly_special.png") no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700!important;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+h2 {
+    font-size: 44px;
+}
+
+h3 {
+    font-size: 38px;
+}
+
+#header {
+    margin-top: 10px;
+}
+
+.display-none {
+    display: none;
+}
+
+.mc {
+    border: solid #014a53 1px;
+    border-radius: 5px;
+    color: #014a53;
+    text-shadow: none;
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 22px;
+}
+
+.mc:hover {
+    cursor: pointer;
+    color: rgb(187, 196, 201);
+}
+
+#question-container, #message  {
+    color: #014a53;
+    /* text-shadow:
+		-1px -1px 0 #fff,
+		1px -1px 0 #fff,
+		-1px 1px 0 #fff,
+        1px 1px 0 #fff,
+        -2px -2px 0 #000,
+		2px -2px 0 #000,
+		-2px 2px 0 #000,
+		2px 2px 0 #000; */
+    border-radius: 10px;
+    background-color: rgba(187, 196, 201, 0.8);
+}
+
+#question-container {
+    padding: 5px;
+    margin: 10px;
+}
+
+#question-text {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+#score-container {
+    margin-bottom: 10px;
+}
+
+#message-image {
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+#start, #end {
+    background-color: #014a53;
+    border: solid rgb(187, 196, 201) 1px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.row {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 450px) {
+    #message-image {
+        width: 260px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+    
+    h3 {
+        font-size: 22px;
+    }
+
+    .mc {
+        font-size: 16px;
+    }
+}   
