@@ -226,6 +226,7 @@ function Game() {
     this.gameOver = false;
     this.nextQuestion();
   };
+  // change html display info
   this.updateDisplay = () => {
     $("#question-number").text(this.questionNum + 1);
     $("#question-text").text(this.question);
@@ -237,6 +238,7 @@ function Game() {
     $("#time-remaining").text(this.maxTime);
     $("#message-container").addClass("display-none");
   };
+  // logic to determine if answer is correct and respond accordingly
   this.handleAnswer = (userGuess, mcElement) => {
     this.guessSubmitted = true;
     this.stopTimer();
@@ -276,22 +278,26 @@ function Game() {
     }
 
     $("#message-container").removeClass("display-none");
+
     if (this.questionNum >= questionsChoicesAnswers.length - 1) {
       this.gameOver = true;
     }
 
     setTimeout(currentGame.nextQuestion, 3000);
   };
+  //
   this.nextQuestion = () => {
     if (this.gameOver) {
       this.endGame();
     } else {
       this.questionNum++;
+
       if (this.questionNum === 0) {
         this.gameStarted = true;
         this.gameOver = false;
         $("#question-container").removeClass("display-none");
       }
+
       this.question = questionsChoicesAnswers[this.questionNum].Question;
       this.mc1 = questionsChoicesAnswers[this.questionNum].MC1;
       this.mc2 = questionsChoicesAnswers[this.questionNum].MC2;
@@ -302,18 +308,20 @@ function Game() {
       this.correct = false;
       this.message = "";
       this.guessSubmitted = false;
-      console.log(this.answer);
       this.updateDisplay();
       this.resetTimer();
     }
   };
+  // stop timer from decrementing
   this.stopTimer = () => {
     clearInterval(this.intervalID);
   };
+  // reset timer to max time
   this.resetTimer = () => {
     this.timeRemaining = this.maxTime;
     this.intervalID = setInterval(currentGame.decrementTimer, 1000);
   };
+  // decrement time remaining every second
   this.decrementTimer = () => {
     if (this.timeRemaining === 0) {
       this.stopTimer();
@@ -323,6 +331,7 @@ function Game() {
     }
     $("#time-remaining").text(this.timeRemaining);
   };
+  // handle end game event
   this.endGame = () => {
     this.stopTimer();
     this.gameStarted = false;
@@ -338,21 +347,25 @@ function Game() {
   };
 }
 
+// new Game instance
 let currentGame = new Game();
 
 $(document).ready(function () {
+  // start game click event
   $("#start").on("click", function () {
     if (!currentGame.gameStarted) {
       currentGame.startGame();
     }
   })
 
+  // end game click event
   $("#end").on("click", function () {
     if (currentGame.gameStarted) {
       currentGame.endGame();
     }
   })
 
+  // user guess click event
   $(".mc").on("click", function (event) {
     if (currentGame.timeRemaining > 0 && !currentGame.guessSubmitted) {
       console.log(event.currentTarget.innerText);
