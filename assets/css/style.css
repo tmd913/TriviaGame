@@ -38,7 +38,6 @@ h3 {
 
 .mc:hover {
     cursor: pointer;
-    color: rgb(187, 196, 201);
 }
 
 #question-container, #message  {
