@@ -201,45 +201,6 @@ const questionsChoicesAnswers = [
   }
 ]
 
-// Game object
-/*
-question
-mc1
-mc2
-mc3
-mc4
-answer
-guess
-correct
-message
-correctImage
-score
-maxTime
-timeRemaining
-gameStarted
-gameOver
-methods:
-  // compare guess to answer
-  // if correct:
-      // incrementScore()
-      // display correct answer and image
-  // nextQuestion()
-  handleAnswer(correct)
-
-  // resetTimer()
-  // gameOver() if last question
-  nextQuestion()
-
-  // add 1 to score and change display
-  incrementScore()
-
-  // change timer to start time and change display
-  resetTimer()
-
-  // display score and message
-  gameOver()
-*/
-
 function Game() {
   this.questionNum = -1;
   this.question;
@@ -276,17 +237,14 @@ function Game() {
     $("#time-remaining").text(this.maxTime);
     $("#message-container").addClass("display-none");
   };
-  // compare guess to answer
-  // if correct:
-  // incrementScore()
-  // display correct answer and image
-  // nextQuestion()
   this.handleAnswer = (userGuess, mcElement) => {
     this.guessSubmitted = true;
     this.stopTimer();
     this.guess = userGuess;
     if (this.guess === this.answer) {
       this.correct = true;
+    } else {
+      this.correct = false;
     }
 
     switch (this.answer) {
@@ -324,8 +282,6 @@ function Game() {
 
     setTimeout(currentGame.nextQuestion, 3000);
   };
-  // resetTimer()
-  // gameOver() if last question
   this.nextQuestion = () => {
     if (this.gameOver) {
       this.endGame();
@@ -354,7 +310,6 @@ function Game() {
   this.stopTimer = () => {
     clearInterval(this.intervalID);
   };
-  // change timer to start time and change display
   this.resetTimer = () => {
     this.timeRemaining = this.maxTime;
     this.intervalID = setInterval(currentGame.decrementTimer, 1000);
@@ -368,7 +323,6 @@ function Game() {
     }
     $("#time-remaining").text(this.timeRemaining);
   };
-  // display score and message
   this.endGame = () => {
     this.stopTimer();
     this.gameStarted = false;
